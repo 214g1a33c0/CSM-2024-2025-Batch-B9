@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Sign </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/speech-sdk"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body style="align-items: center;">
+    <div class="container" style="text-align: center;">
+        <h1>Speech to Sign</h1>
+        <textarea id="transcription" rows="4" cols="50" placeholder="Type or speak your text here..." autofocus></textarea> <br> <br>
+        <button id="startButton">Start Recording</button> 
+        <button id="stopButton"> Stop Recording</button> <br> <br>
+        <button id="translateButton">Translate</button> <br> <br> 
+        <h2 style="text-align: center;">ISL Signs Shown Below:</h2> 
+
+        <div id="output"></div>
+    </div>
+
+    <script >
+  let recognizer;
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const transcription = document.getElementById('transcription');
+
+        // Fetch token from Flask server
+        fetch('/get-token')
+            .then(response => response.json())
+            .then(data => {
+                const speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(data.token, data.region);
+                speechConfig.speechRecognitionLanguage = 'en-US';
+                const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+                recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
+
+                // Real-time transcription
+                recognizer.recognizing = (s, e) => {
+                    transcription.textContent = e.result.text;
+                };
+                recognizer.recognized = (s, e) => {
+                    if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
+                        transcription.textContent = e.result.text;
+                        document.getElementById('transcription').value = e.result.text;
+
+                    }
+                };
+
+  
+
+
+
+                recognizer.canceled = (s, e) => {
+                    transcription.textContent = 'Recognition canceled: ' + e.errorDetails;
+                    toggleButtons(false);
+                };
+                recognizer.sessionStopped = () => {
+                    toggleButtons(false);
+                };
+            });
+
+        // Button controls
+        startButton.onclick = () => {
+            recognizer.startContinuousRecognitionAsync();
+            toggleButtons(true);
+        };
+        stopButton.onclick = () => {
+            recognizer.stopContinuousRecognitionAsync();
+            toggleButtons(false);
+        };
+
+        function toggleButtons(isRecognizing) {
+            startButton.disabled = isRecognizing;
+            stopButton.disabled = !isRecognizing;
+
+        }
+
+   
+
+
+        $(document).ready(function() {
+            $('#translateButton').click(function() {
+                const inputText = $('#transcription').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/translate',
+                    data: JSON.stringify({ text: inputText }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        $('#output').html(response.html);
+                    },
+                    error: function() {
+                        alert('Error translating text.');
+                    }
+                });
+            });
+
+    
+        });
+
+    </script>
+        <footer >
+            <p>Developed By SRIT Batch-9 CSM-B(2021-2025)</p>
+        </footer>
+</body>
+</html>

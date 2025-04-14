@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Sign</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body >
+    <h1>Text to Sign Translator</h1>
+    <div style="text-align:  center;">
+        <input type="text" id="inputText" style="width: 300px; height: 50px; text-align: center;"  placeholder="Enter text to translate to ISL" autofocus> <br><br>
+        <button id="translateButton">Translate</button>
+     
+    </div>
+    <h2 style="text-align: center;">ISL Signs Shown Below:</h2> 
+    <div id="outputContainer" style="text-align: center;">
+        
+        <div id="output"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      
+
+        $(document).ready(function() {
+            $('#translateButton').click(function() {
+                const inputText = $('#inputText').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/translate',
+                    data: JSON.stringify({ text: inputText }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        $('#output').html(response.html);
+                    },
+                    error: function() {
+                        alert('Error translating text.');
+                    }
+                });
+            });
+
+    
+        });
+    </script>
+
+<footer >
+    <p>Developed By SRIT Batch-9 CSM-B(2021-2025)</p>
+</footer>
+</body>
+</html>
