@@ -13,22 +13,24 @@ By focusing on the direction of communication from hearing individuals to the de
 
 # Results
 
-**Speech To Text**
+**Speech To Text**: Take voice as input and transcribe into text in realtime.
 
 ![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/speechtotext.gif)
 
-**Speech To Sign**
+**Speech To Sign**: When click on Start Recording it Take voice as input in realtime continuosly until click on Stop Recording. Then when click on translate the transcribed text into ISL Gifs/Letters.
 
 ![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/speechtosign.gif)
 
-**Text To Sign**
+**Text To Sign**: User can provide text and when click on translate, shows ISL Gifs/Letters based on input text.
 
 ![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/texttosign.gif)
 
-**Image Link to Sign**
+
+**Image To Sign**: User can upload image directly and text is extracted using OCR when click on extract,user can modify the text or directly click on translate to convert into ISL Gifs/letters.
+
+![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/imagetosign.gif)
+
+**Image Link to Sign**: User can provide image link which must contains text, text is extracted using OCR when click on extract. After extracting text, user can modify the text or directly click on translate to convert into ISL Gifs/letters.
 
 ![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/linktosign.gif)
 
-**Image To Sign**
-
-![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/imagetosign.gif)
