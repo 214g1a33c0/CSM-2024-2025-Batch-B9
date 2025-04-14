@@ -11,3 +11,6 @@ Our project addresses some of these limitations by contributing to the developme
 
 By focusing on the direction of communication from hearing individuals to the deaf community, our solution aims to improve accessibility, raise ISL visibility, and serve as a foundation for future ISL-based innovations.
 
+# Results
+**Image To Sign**
+![](https://github.com/214g1a33c0/CSM-2024-2025-Batch-B9/blob/main/Project%20Data/Results/imagetosign.gif)
