@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Light background for a pleasant feel */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Darker text for contrast */
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db; /* Soft blue for buttons */
+    color: white; /* White text for contrast */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #dbe117; 
+    color: black;
+}
+footer {
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+}
+
+
+
+#outputContainer {
+    width: 100%;           
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;     
+}
+
+#output {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;       /* Prevent wrapping */
+    overflow-x: auto;        /* Allow horizontal scroll */
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+}
+
+#output img {
+    max-width: 200px; /* or any desired max size */
+    max-height: 200px;
+    object-fit: cover; /* Keeps aspect ratio without overflowing */
+    margin-right: 10px;
+}
+
