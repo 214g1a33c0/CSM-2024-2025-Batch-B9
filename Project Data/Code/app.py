@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 # Azure Speech Service configuration
-API_KEY = "vFqRoqGUdqgh1zFbSd6vMQARp1CW5xPvO5mvpVrDajSBLsIyYhliJQQJ99BCACYeBjFXJ3w3AAAYACOGggm4"
+API_KEY = "YOUR API KEY"
 REGION = "eastus"
 
 #Image configuration
